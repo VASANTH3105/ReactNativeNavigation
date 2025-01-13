@@ -2,13 +2,15 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, TouchableHighlight } f
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import imageLib from './../../assets/AssetExports'
-const SplashScreen = () => {
+const SplashScreen = ({navigation}: any) => {
     const [opacityCapacity, setOpacityCapacity] = useState(0);
     
       const HandleOnClickTesting = () => {
         console.log('Button Clicked');
         //Alert.alert("Hi to User");
         setOpacityCapacity(opacityCapacity + 0.1);
+
+        
         
       
       }
