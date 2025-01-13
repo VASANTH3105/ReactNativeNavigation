@@ -28,12 +28,12 @@ const SplashScreen = ({navigation}: any) => {
           onPress={() => HandleOnClickTesting()}>
           <Text style={styles.buttonText}>Create Account</Text>
         </TouchableOpacity>
-        <TouchableHighlight
-        underlayColor={'#ffffff'}
+        <TouchableOpacity
+        //underlayColor={'#ffffff'}
         //style={styles.loginButton}
-        onPress={() => HandleOnClickTesting()}>
+        onPress={() => navigation.navigate("HomeScreen")}>
         <Text style={styles.loginButtonText}>Login</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
       <View style={styles.bottomData}>
         <Text style={styles.bottomDataText}>powered by Rapid Data Technologies</Text>
