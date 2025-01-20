@@ -28,7 +28,9 @@ const RootNavigator = () => {
         options={{headerShown: false}} // Hide header if it's a splash screen
       />
       {/* Add HomeScreen */}
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen
+      options={{headerShown: false}} // Hide header if it's a splash screen
+      name="HomeScreen" component={HomeScreen} />
 
       {/* Add StackNavigationDemo */}
       <Stack.Screen

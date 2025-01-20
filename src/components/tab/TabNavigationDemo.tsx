@@ -10,6 +10,8 @@ import DrawerNavigationDemo from '../drawer/DrawerNavigationDemo';
 type BottomTabParamsList = {
     TabScreen1: undefined;
     TabScreen2: undefined;
+    HomeScreen: undefined;
+    DrawerNav: undefined;
 }
 
 const BottomTab = createBottomTabNavigator<BottomTabParamsList>();
@@ -17,11 +19,26 @@ const BottomTab = createBottomTabNavigator<BottomTabParamsList>();
 
 const TabNavigationDemo = () => {
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator
+    screenOptions={{
+      tabBarStyle: {
+        backgroundColor: '#fff',
+        padding: 0,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        height: 60,
+        elevation: 8,
+      },
+      tabBarLabelStyle: {
+        fontSize: 10,
+        fontWeight: 'light',
+      }
+    }}
+    >
         <BottomTab.Screen name="TabScreen1" component={TabScreen1} />
         <BottomTab.Screen name="TabScreen2" component={TabScreen2} />
-        <BottomTab.Screen name="HomeScreen" component={HomeScreen} />
-        <BottomTab.Screen name="DrawerNavigationDemo" component={DrawerNavigationDemo} options={{headerShown: false}} />
+        <BottomTab.Screen  name="HomeScreen" component={HomeScreen} />
+        <BottomTab.Screen name="DrawerNav" component={DrawerNavigationDemo} options={{headerShown: false}} />
     </BottomTab.Navigator>
   )
 }
