@@ -45,7 +45,7 @@ const SplashScreen = ({navigation}: any) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#f0f8ff', // Light blue background for a soft, modern look
+    backgroundColor: '#ffffff', // Light blue background for a soft, modern look
   },
   container: {
     flex: 1,

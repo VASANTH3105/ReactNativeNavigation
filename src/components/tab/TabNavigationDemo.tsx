@@ -24,8 +24,8 @@ const TabNavigationDemo = () => {
       tabBarStyle: {
         backgroundColor: '#fff',
         padding: 0,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
+        //borderTopLeftRadius: 20,
+        //borderTopRightRadius: 20,
         height: 60,
         elevation: 8,
       },
@@ -35,7 +35,7 @@ const TabNavigationDemo = () => {
       }
     }}
     >
-        <BottomTab.Screen name="TabScreen1" component={TabScreen1} />
+        <BottomTab.Screen options={{headerShown: false}} name="TabScreen1" component={TabScreen1} />
         <BottomTab.Screen name="TabScreen2" component={TabScreen2} />
         <BottomTab.Screen  name="HomeScreen" component={HomeScreen} />
         <BottomTab.Screen name="DrawerNav" component={DrawerNavigationDemo} options={{headerShown: false}} />

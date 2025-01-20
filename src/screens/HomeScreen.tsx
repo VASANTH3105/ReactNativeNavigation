@@ -48,6 +48,7 @@ const HomeScreen = () => {
           onPress={() => navigation.navigate('SplashScreen')}>
           <Text>Splash Screen</Text>
         </TouchableOpacity>
+        
       </View>
     </View>
   );
