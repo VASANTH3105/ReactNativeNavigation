@@ -111,8 +111,9 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   contact: {
-    fontSize: 12,
-    color: '#777',
+    fontSize: 10,
+    fontWeight: 'light',
+    color: '#007AFF',
   },
 });
 
