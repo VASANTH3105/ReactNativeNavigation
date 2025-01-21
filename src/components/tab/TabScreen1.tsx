@@ -3,22 +3,22 @@ import React from 'react';
 import Categories from '../customComponents/Categories';
 import MyHeader from '../customComponents/MyHeader';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import {ScrollView} from 'react-native-gesture-handler';
+import MyCarousel from '../customComponents/MyCarousel';
+import RandomUser from '../customComponents/RandomUser';
 
 const TabScreen1 = ({navigation}: any) => {
   return (
     <View style={styles.outerContainer}>
       <MyHeader />
-      <View style={styles.container}>
-        <Text style={styles.title}>TabScreen1</Text>
 
-        <Button
-          onPress={() => navigation.navigate('HomeScreen')}
-          title="Back to HomeScreen"
-          color="#4CAF50"
-        />
-        <Icon name="rocket" size={20} color="#343434" />
-      </View>
+      <ScrollView>
+        <View style={styles.carouselView}>
+          <MyCarousel />
+        </View>
+
+        <RandomUser />
+      </ScrollView>
     </View>
   );
 };
@@ -32,13 +32,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f0f4f8', 
+    backgroundColor: '#f0f4f8',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#333',
-    marginVertical: 20, 
+    marginVertical: 20,
   },
   button: {
     marginTop: 20,
@@ -46,6 +46,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     color: '#fff',
+  },
+  carouselView: {
+    marginTop: 5,
+    //backgroundColor: '#000',
   },
 });
 
