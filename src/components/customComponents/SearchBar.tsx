@@ -1,10 +1,12 @@
 import {View, TextInput, StyleSheet, Text} from 'react-native';
 import React from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const SearchBar = () => {
   return (
     <View style={styles.container}>
       {/* <Text style={styles.icon}>{'\uD83D\uDD0D'}</Text> */}
+      <Icon name = "search" size={20} color={"#888"} style= {styles.icon} />
       <TextInput
         style={styles.input}
         placeholder="Search here..."

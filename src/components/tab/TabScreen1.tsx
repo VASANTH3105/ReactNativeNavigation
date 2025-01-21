@@ -2,6 +2,8 @@ import {View, Text, Button, StyleSheet} from 'react-native';
 import React from 'react';
 import Categories from '../customComponents/Categories';
 import MyHeader from '../customComponents/MyHeader';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const TabScreen1 = ({navigation}: any) => {
   return (
@@ -15,6 +17,7 @@ const TabScreen1 = ({navigation}: any) => {
           title="Back to HomeScreen"
           color="#4CAF50"
         />
+        <Icon name="rocket" size={20} color="#343434" />
       </View>
     </View>
   );

@@ -1,15 +1,19 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import SearchBar from './SearchBar';
 import imageLib from '../../../assets/AssetExports';
 import Categories from './Categories';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-const MyHeader = () => {
+const MyHeader = ({navigation}: any) => {
   return (
     <View style={styles.container}>
-      <View style = {styles.logoContainer}>
-        <Image style={styles.image} source={imageLib.rdimage} />
-        <Image style={styles.profileImage} source={imageLib.profileimage} />
+      <View style={styles.logoContainer}>
+        <TouchableOpacity onPress={() => console.log('clicked')}>
+          <Image style={styles.image} source={imageLib.rdimage} />
+        </TouchableOpacity>
+        {/* <Image style={styles.profileImage} source={imageLib.profileimage} /> */}
+        <Icon name='user-circle-o' size={25} color={"#888"} style = {styles.icon}/>
       </View>
       <SearchBar />
       <Categories />
@@ -27,6 +31,9 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
+  icon: {
+    marginHorizontal: 10,
+  },
   myHeader: {
     marginVertical: 10,
     fontSize: 20,
@@ -42,15 +49,14 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: "space-between"
+    justifyContent: 'space-between',
   },
   profileImage: {
     width: 30,
     height: 30,
     borderRadius: 15,
     marginHorizontal: 10,
-
-  }
+  },
 });
 
 export default MyHeader;
