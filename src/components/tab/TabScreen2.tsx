@@ -12,6 +12,7 @@ import NetInfo from '@react-native-community/netinfo';
 import MyHeader from '../customComponents/MyHeader';
 import {launchCamera} from 'react-native-image-picker';
 import GetLocation from 'react-native-get-location';
+import GeoLocationLogin from '../customComponents/GeoLocationLogin';
 
 // Office Location (latitude, longitude)
 const officeLatitude = 12.910617085683858;
@@ -72,50 +73,6 @@ const TabScreen2 = () => {
     }
   };
 
-  // Check Proximity and Enable/Disable Button
-  const checkProximity = () => {
-    GetLocation.getCurrentPosition({
-      enableHighAccuracy: true,
-      timeout: 15000,
-    })
-      .then((location) => {
-        const {latitude, longitude} = location;
-        const distance = getDistance(
-          latitude,
-          longitude,
-          officeLatitude,
-          officeLongitude,
-        );
-
-        console.log(`Distance to office: ${distance} meters`);
-        if (distance <= 250) {
-          setIsButtonEnabled(true); // Enable button
-        } else {
-          setIsButtonEnabled(false); // Disable button
-        }
-      })
-      .catch((error) => {
-        const {code, message} = error;
-        console.warn(code, message);
-      });
-  };
-
-  useEffect(() => {
-    // Check proximity when the component mounts
-    checkProximity();
-
-    // Subscribe to network changes (for demonstration purposes)
-    const unsubscribe = NetInfo.addEventListener((state) => {
-      Alert.alert('Connection type', state.type);
-      Alert.alert('Is connected?', state.isConnected ? 'Yes' : 'No');
-    });
-
-    // Cleanup on component unmount
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
   return (
     <View style={styles.outerContainer}>
       <MyHeader />
@@ -126,37 +83,26 @@ const TabScreen2 = () => {
           style={styles.cameraArea}>
           <Image source={{uri: picture}} style={styles.cameraImage} />
         </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.loginButton,
-            {backgroundColor: isButtonEnabled ? '#000' : '#888'},
-          ]}
-          disabled={!isButtonEnabled}>
-          <Text style={styles.loginButtonText}>Login</Text>
-        </TouchableOpacity>
+        <GeoLocationLogin />
       </View>
-      <Text style={styles.proximityText}>
-        {isButtonEnabled
-          ? 'You are within 250 meters of the office.'
-          : 'You are outside the 250-meter range.'}
-      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   outerContainer: {
-    backgroundColor: '#f0f4f8',
+    backgroundColor: '#ffffff',
     flex: 1,
   },
   cameraScreen: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fffffff',
     borderRadius: 10,
     margin: 10,
+    borderColor: "#000000",
   },
   cameraArea: {
-    flex: 0.9,
+    flex: 0.8,
     backgroundColor: '#ffffff',
     borderRadius: 10,
     margin: 10,
@@ -167,25 +113,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#ffffff',
   },
-  loginButton: {
-    flex: 0.1,
-    borderRadius: 5,
-    margin: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loginButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'light',
-    textTransform: 'uppercase',
-  },
-  proximityText: {
-    textAlign: 'center',
-    fontSize: 16,
-    margin: 10,
-    color: '#555',
-  },
+  
 });
 
 export default TabScreen2;
