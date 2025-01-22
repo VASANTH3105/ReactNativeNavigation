@@ -37,10 +37,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#00000000',
         marginHorizontal: 0,
         marginVertical: 10,
-      
+        paddingVertical: 1,
+
     },
     flatListItem: {
-        backgroundColor: '#f0f4f8',
+        backgroundColor: '#ffffff',
         marginHorizontal: 5,
         paddingVertical: 8,
         paddingHorizontal: 12,

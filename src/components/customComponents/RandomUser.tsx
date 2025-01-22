@@ -10,7 +10,7 @@ const RandomUser = () => {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        const response = await fetch('https://randomuser.me/api/?results=8');
+        const response = await fetch('https://randomuser.me/api/?results=18');
 
         if (!response.ok) {
           Alert.alert('Error fetching data');
@@ -26,7 +26,7 @@ const RandomUser = () => {
       }
     };
 
-    fetchUser(); // Call function once
+    fetchUser();
   }, []);
 
   if (loading) {
@@ -48,9 +48,7 @@ const RandomUser = () => {
           <Text style={styles.location}>
             {item.location.city}, {item.location.country}
           </Text>
-          <Text style={styles.contact}>
-            {item.email} | {item.phone}
-          </Text>
+          <Text style={styles.contact}>{item.email}</Text>
         </View>
       </View>
     );
@@ -62,6 +60,8 @@ const RandomUser = () => {
         data={user}
         keyExtractor={(item: any) => item.login.uuid}
         renderItem={renderItem}
+        numColumns={2}
+        columnWrapperStyle={styles.row} 
       />
     </View>
   );
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    //backgroundColor: '#f5f5f5',
   },
   loading: {
     fontSize: 18,
@@ -84,36 +83,41 @@ const styles = StyleSheet.create({
     color: 'red',
     marginTop: 20,
   },
+  row: {
+    justifyContent: 'space-between', // Ensures even spacing in the row
+    marginBottom: 12,
+  },
   card: {
-    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+    width: '48%', // Keeps space for spacing
     alignItems: 'center',
-    backgroundColor: '#fff',
-    marginVertical: 5,
-    padding: 10,
-    borderRadius: 8,
-    elevation: 1, // Shadow effect
+    padding: 8,
+    borderRadius: 5,
+    
   },
   image: {
-    width: 50,
-    height: 50,
-    borderRadius: 25, // Circular image
-    marginRight: 10,
+    width: 60,
+    height: 60,
+    borderRadius: 30, // Circular image
+    marginBottom: 10,
   },
   info: {
-    flex: 1,
+    alignItems: 'center',
   },
   name: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   location: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#555',
+    textAlign: 'center',
   },
   contact: {
     fontSize: 10,
-    fontWeight: 'light',
     color: '#007AFF',
+    textAlign: 'center',
   },
 });
 

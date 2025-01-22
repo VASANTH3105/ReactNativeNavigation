@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     margin: 0,
-    padding: 20,
-    //elevation: 5,
+    padding: 8,
+    elevation: 5,
     //shadowColor: '#000',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,

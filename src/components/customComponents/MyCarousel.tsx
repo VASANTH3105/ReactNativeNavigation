@@ -60,7 +60,7 @@ const MyCarousel = () => {
 
 const styles = StyleSheet.create({
   card: {
-    position: 'relative', // Enables absolute positioning for the overlay
+    position: 'relative', 
     overflow: 'hidden',
     marginHorizontal: 5,
     marginTop: 2,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 190, // Adjust image height
+    height: 190, 
     resizeMode: 'cover',
   },
   overlay: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
-    backgroundColor: '#00000050',
+    backgroundColor: '#00000010',
     width: '100%',
     height: '100%',
   },

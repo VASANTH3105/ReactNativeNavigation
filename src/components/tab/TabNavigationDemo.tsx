@@ -25,6 +25,8 @@ const TabNavigationDemo = () => {
           padding: 0,
           height: 60,
           elevation: 8,
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
         },
         tabBarLabelStyle: {
           fontSize: 10,

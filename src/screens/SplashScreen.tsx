@@ -7,6 +7,7 @@ const SplashScreen = ({navigation}: any) => {
     
       const HandleOnClickTesting = () => {
         console.log('Button Clicked');
+        navigation.navigate('SignUp');
         //Alert.alert("Hi to User");
         setOpacityCapacity(opacityCapacity + 0.1);
 
