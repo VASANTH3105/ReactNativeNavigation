@@ -1,10 +1,11 @@
-import {View, Text, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
-import React from 'react';
+import {View, Text, StyleSheet, TouchableOpacity, StatusBar, Button} from 'react-native';
+import React, { useContext } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamsList} from '../RootNavigator';
 import SearchBar from '../components/customComponents/SearchBar';
 import MyHeader from '../components/customComponents/MyHeader';
+import { AuthContext } from '../components/context/AuthContext';
 
 type HomeScreenNavigationProp = StackNavigationProp<
   RootStackParamsList,
@@ -12,12 +13,19 @@ type HomeScreenNavigationProp = StackNavigationProp<
 >;
 
 const HomeScreen = () => {
+
+  const { user, logout } = useContext(AuthContext);
+
   const navigation = useNavigation<HomeScreenNavigationProp>();
 
   return (
     <View style={{flex: 1}}>
       <StatusBar  backgroundColor={"white"}/>
       <MyHeader />
+      <View>
+      
+      <Button title="Logout" onPress={() => logout()} />
+    </View>
       <View style={styles.container}>
         <Text style={styles.title}>Welcome to Home Screen</Text>
         <Text style={styles.description}>
@@ -46,6 +54,12 @@ const HomeScreen = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('SplashScreen')}>
+          <Text>Splash Screen</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('StackDrawer')}>
           <Text>Splash Screen</Text>
         </TouchableOpacity>
         

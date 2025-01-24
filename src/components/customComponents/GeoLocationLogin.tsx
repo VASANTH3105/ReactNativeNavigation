@@ -10,7 +10,6 @@ import {
   Platform,
 } from 'react-native';
 import GetLocation from 'react-native-get-location';
-import MyHeader from '../customComponents/MyHeader';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Using FontAwesome
 import {Modal} from 'react-native';
 

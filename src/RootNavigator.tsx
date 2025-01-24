@@ -8,6 +8,7 @@ import TabNavigationDemo from './components/tab/TabNavigationDemo';
 import DrawerNavigationDemo from './components/drawer/DrawerNavigationDemo';
 import SignUp from './screens/SignUp';
 import Login from './screens/Login';
+import StackDrawer from './components/stack/StackDrawer';
 
 // Define the types for navigation
 export type RootStackParamsList = {
@@ -18,6 +19,7 @@ export type RootStackParamsList = {
   SplashScreen: undefined;
   SignUp: undefined;
   Login: undefined;
+  StackDrawer: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamsList>();
@@ -43,27 +45,33 @@ const RootNavigator = () => {
       />
 
       <Stack.Screen
-        options={{headerShown: false}} // Hide header if it's a splash screen
+        options={{headerShown: false}} 
         name="TabNavigationDemo"
         component={TabNavigationDemo}
       />
 
       <Stack.Screen
-        options={{headerShown: false}} // Hide header if it's a splash screen
+        options={{headerShown: false}} 
         name="DrawerNavigationDemo"
         component={DrawerNavigationDemo}
       />
 
       <Stack.Screen 
-      options={{headerShown: false}} // Hide header if it's a splash screen
+      options={{headerShown: false}}
       name='SignUp'
       component={SignUp}
       />
 
       <Stack.Screen 
-      options={{headerShown: false}} // Hide header if it's a splash screen
+      options={{headerShown: false}}
       name = 'Login'
       component= {Login}
+      />
+
+      <Stack.Screen 
+      options={{headerShown: false}} 
+      name='StackDrawer'
+      component={StackDrawer}
       />
     </Stack.Navigator>
   );
