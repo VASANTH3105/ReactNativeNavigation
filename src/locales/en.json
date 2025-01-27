@@ -1,4 +1,10 @@
 {
-    "welcome": "Welcome to the application!",
-    "language_switch": "Switch Language"
-}
+    "splashScreen": {
+      "welcome": "Welcome to RapidATS",
+      "subtitle": "Your one-stop solution for advanced tracking and management.",
+      "create_account": "Create Account",
+      "login": "Login",
+      "bottom_data_text": "Powered by Rapid Data Technologies"
+    }
+  }
+  

@@ -1,47 +1,55 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, TouchableHighlight } from 'react-native'
-import React, { useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context';
-import imageLib from './../../assets/AssetExports'
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+} from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import imageLib from './../../assets/AssetExports';
+import { useTranslation } from 'react-i18next';
 const SplashScreen = ({navigation}: any) => {
-    const [opacityCapacity, setOpacityCapacity] = useState(0);
-    
-      const HandleOnClickTesting = () => {
-        console.log('Button Clicked');
-        navigation.navigate('SignUp');
-        //Alert.alert("Hi to User");
-        setOpacityCapacity(opacityCapacity + 0.1);
+  const [opacityCapacity, setOpacityCapacity] = useState(0);
 
-        
-        
-      
-      }
+  const HandleOnClickTesting = () => {
+    console.log('Button Clicked');
+    navigation.navigate('SignUp');
+    //Alert.alert("Hi to User");
+    setOpacityCapacity(opacityCapacity + 0.1);
+  };
+  
+  const {t} = useTranslation();
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Image style={styles.image} source={imageLib.rdimage} />
-        <Text style={styles.title}>Welcome to RapidATS</Text>
+        <Text style={styles.title}>{t('splashScreen.welcome')}</Text>
         <Text style={styles.subtitle}>
-          Your one-stop solution for advanced tracking and management.
+        {t('splashScreen.subtitle')}
         </Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => HandleOnClickTesting()}>
-          <Text style={styles.buttonText}>Create Account</Text>
+          <Text style={styles.buttonText}>{t('splashScreen.create_account')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
-        //underlayColor={'#ffffff'}
-        //style={styles.loginButton}
-        onPress={() => navigation.navigate("HomeScreen")}>
-        <Text style={styles.loginButtonText}>Login</Text>
+          //underlayColor={'#ffffff'}
+          //style={styles.loginButton}
+          onPress={() => navigation.navigate('HomeScreen')}>
+          <Text style={styles.loginButtonText}>{t('splashScreen.login')}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.bottomData}>
-        <Text style={styles.bottomDataText}>powered by Rapid Data Technologies</Text>
+        <Text style={styles.bottomDataText}>
+        {t('splashScreen.bottom_data_text')}
+        </Text>
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -97,24 +105,22 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     padding: 2,
-    backgroundColor: "#000"
+    backgroundColor: '#000',
   },
   bottomDataText: {
-    color: "#ffffff50"
+    color: '#ffffff50',
   },
   loginButton: {
-    backgroundColor: "#fff"
+    backgroundColor: '#fff',
   },
   loginButtonText: {
     marginTop: 8,
     fontSize: 16,
-    color: "#00000080",
+    color: '#00000080',
     textDecorationLine: 'underline',
     textDecorationStyle: 'solid',
     textDecorationColor: '#00000080',
-
-
-  }
+  },
 });
 
-export default SplashScreen
+export default SplashScreen;
