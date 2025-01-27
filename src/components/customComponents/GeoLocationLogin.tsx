@@ -12,6 +12,8 @@ import {
 import GetLocation from 'react-native-get-location';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Using FontAwesome
 import {Modal} from 'react-native';
+import { saveLocationData, getLocationData } from '../../appdata/storage';
+
 
 const officeLatitude = 12.910617085683858;
 const officeLongitude = 80.22763635216177;
@@ -79,6 +81,8 @@ const GeoLocationLogin = () => {
     requestLocationPermission();
   }, []);
 
+  
+
   const checkProximity = useCallback(async () => {
     const hasPermission = await requestLocationPermission();
     if (!hasPermission) {
@@ -105,6 +109,9 @@ const GeoLocationLogin = () => {
         );
         console.log(`Distance to office: ${distance.toFixed(2)} meters`);
         setDistance(distance.toFixed(2)); //rounds valus and converts as string
+
+
+        saveLocationData(latitude, longitude, distance.toFixed(2));
 
         if (distance <= 100) {
           setIsButtonEnabled(true);
@@ -177,7 +184,11 @@ const GeoLocationLogin = () => {
           {backgroundColor: isButtonEnabled ? 'green' : 'gray'},
         ]}
         disabled={!isButtonEnabled}
-        onPress={() => setVisible(true)}>
+        onPress={() => {setVisible(true)
+          console.log('Login button pressed')
+          saveLocationData(latitude, longitude, parseFloat(distance).toFixed(2));
+          console.log('Location data saved:', latitude, longitude, distance);
+        }}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 

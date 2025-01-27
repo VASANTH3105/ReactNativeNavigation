@@ -1,14 +1,33 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import FirebaseExample from '../customComponents/FirebaseExample'
+import { View, Text, Button } from 'react-native';
+import React, { useState } from 'react';
+import { getLocationData } from '../../appdata/storage'; // Use this directly
 
 const DrawerNavigation1 = () => {
+  const [latitude, setLatitude] = useState<string | null>(null);
+  const [longitude, setLongitude] = useState<string | null>(null);
+  const [distance, setDistance] = useState<string | null>(null);
+
+  const fetchLocationData = async () => {
+    const locationData = await getLocationData(); // Use the imported function
+    setLatitude(locationData.latitude );
+    setLongitude(locationData.longitude);
+    setDistance(locationData.distance);
+  };
+
   return (
     <View>
-      <Text>DrawerNavigation1</Text>
-      <FirebaseExample />
+      <Text>DrawerNavigation1</Text>  
+      <Text>Latitude: {latitude}</Text>
+      <Text>Longitude: {longitude}</Text>
+      <Text>Distance: {distance}</Text>
+      <Button
+        title="Get my data"
+        onPress={() => {
+          fetchLocationData(); // Use the renamed function
+        }}
+      />
     </View>
-  )
-}
+  );
+};
 
-export default DrawerNavigation1
+export default DrawerNavigation1;
