@@ -1,13 +1,14 @@
-import { View, Text, Alert } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import NetInfo from '@react-native-community/netinfo'
+import {View, Text, Alert} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import NetInfo from '@react-native-community/netinfo';
+import FilePicker from '../customComponents/FilePicker';
+import PdfViewer from '../customComponents/PdfViewer';
 
 const DrawerNavigation2 = () => {
-
   const [isConnected, setIsConnected] = useState(true);
 
   useEffect(() => {
-    const unSubscribe = NetInfo.addEventListener((state) => {
+    const unSubscribe = NetInfo.addEventListener(state => {
       if (state.isInternetReachable) {
         setIsConnected(true);
         Alert.alert('Connected', 'You are connected to the internet');
@@ -17,28 +18,33 @@ const DrawerNavigation2 = () => {
         Alert.alert('Disconnected', 'You are disconnected from the internet');
         console.log('The device is connected but no internet access.');
       }
-      
-    })
+    });
 
     return () => {
       unSubscribe();
-    }
-  },[isConnected])
+    };
+  }, [isConnected]);
 
   //show alert when it is connected or disconnected
   useEffect(() => {
-    if(!isConnected) {
+    if (!isConnected) {
       Alert.alert('You are Offline...!');
     } else {
       Alert.alert('Back to online...!');
     }
-  }, [isConnected])
+  }, [isConnected]);
 
   return (
     <View>
-      {isConnected ? <Text>You are Online...!</Text> : <Text>You are Offline...!</Text>}
+      {isConnected ? (
+        <Text>You are Online...!</Text>
+      ) : (
+        <Text>You are Offline...!</Text>
+      )}
+      <FilePicker />
+      {/* <PdfViewer /> */}
     </View>
-  )
-}
+  );
+};
 
-export default DrawerNavigation2
+export default DrawerNavigation2;

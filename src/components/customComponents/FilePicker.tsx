@@ -22,11 +22,10 @@ const FilePicker = () => {
   };
 
   return (
-    <View style = {styles.container}>
+    <View>
       <Text>File Picker</Text>
       <View>
         <Button onPress={() => selectDoc()} title="Upload File" />
-        {/* Safely access pickedImage properties */}
         {pickedImage && (
           <View style={{marginTop: 20}}>
             <Image
@@ -45,14 +44,6 @@ const FilePicker = () => {
   );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#000000',
-
-    }
-})
+const styles = StyleSheet.create({});
 
 export default FilePicker;
