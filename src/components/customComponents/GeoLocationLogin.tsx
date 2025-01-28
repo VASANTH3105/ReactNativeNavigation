@@ -13,6 +13,7 @@ import GetLocation from 'react-native-get-location';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Using FontAwesome
 import {Modal} from 'react-native';
 import { saveLocationData, getLocationData } from '../../appdata/storage';
+import { useTranslation } from 'react-i18next';
 
 
 const officeLatitude = 12.910617085683858;
@@ -142,6 +143,8 @@ const GeoLocationLogin = () => {
     }
   }, [visible]);
 
+  const { t } = useTranslation();
+
   return (
     <View style={styles.outerContainer}>
       <TouchableOpacity
@@ -152,24 +155,25 @@ const GeoLocationLogin = () => {
         ]}
         disabled={!locateBtn}>
         <Icon name="map-marker" size={20} color={'#ffffff'} />
-        <Text style={styles.checkProximityText}>Locate me</Text>
+        <Text style={styles.checkProximityText}>{t("geolocation.Locate me")}</Text>
       </TouchableOpacity>
 
       {distance.length > 0 ? (
         <View>
           <Text style={styles.locationText}>
-            You are {distance} meters away from office
+          {t("geolocation.You are {{distance}} meters away from office", { distance: distance })}
+
           </Text>
           <View style={styles.locationContainer}>
             <View style={styles.locationInnerContainer}>
-              <Text style={styles.locationTextLabel}>Latitude</Text>
+              <Text style={styles.locationTextLabel}>{t("geolocation.Latitude")}</Text>
               <Text style={styles.locationText}>
                 {latitude ?? 'Fetching...'}
               </Text>
             </View>
 
             <View style={styles.locationInnerContainer}>
-              <Text style={styles.locationTextLabel}>Longitude</Text>
+              <Text style={styles.locationTextLabel}>{t("geolocation.Longitude")}</Text>
               <Text style={styles.locationText}>
                 {longitude ?? 'Fetching...'}
               </Text>
@@ -189,7 +193,7 @@ const GeoLocationLogin = () => {
           saveLocationData(latitude, longitude, parseFloat(distance).toFixed(2));
           console.log('Location data saved:', latitude, longitude, distance);
         }}>
-        <Text style={styles.loginButtonText}>Login</Text>
+        <Text style={styles.loginButtonText}>{t("geolocation.Login")}</Text>
       </TouchableOpacity>
 
       <Modal
@@ -200,7 +204,7 @@ const GeoLocationLogin = () => {
       >
         <View style={styles.modalBackground}>
           <View style={styles.modalContainer}>
-            <Text>Status: active (Online)</Text>
+            <Text>{t("geolocation.Status: active (Online)")}</Text>
             {/* <TouchableOpacity onPress={() => setVisible(false)}>
               <Text style={styles.button}>close</Text>
             </TouchableOpacity> */}

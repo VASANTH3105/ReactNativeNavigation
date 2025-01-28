@@ -5,5 +5,39 @@
         "create_account": "إنشاء حساب",
         "login": "تسجيل الدخول",
         "bottom_data_text": "بتمويل من Rapid Data Technologies"
+    },
+    "categories": {
+        "Projects": "المشاريع",
+        "POC": "إثبات المفهوم",
+        "IT Operations": "عمليات تكنولوجيا المعلومات",
+        "HR": "الموارد البشرية",
+        "Profile": "الملف الشخصي",
+        "Administration": "الإدارة",
+        "Training & Development": "التدريب والتطوير",
+        "Operations": "العمليات"
+    },
+    "geolocation": {
+        "Search here": "ابحث هنا",
+        "Locate me": "حدد موقعي",
+        "Login": "تسجيل الدخول",
+        "Status: active (Online)": "الحالة: نشط (متصل)",
+        "Fetching...": "جاري الجلب...",
+        "You are {{distance}} meters away from office": "أنت على بعد {{distance}} متر من المكتب",
+        "Latitude": "خط العرض",
+        "Longitude": "خط الطول"
+    },
+    "homeScreen": {
+        "welcome": "مرحبًا بك في الشاشة الرئيسية",
+        "description": "استكشف التطبيق من خلال التنقل إلى شاشات مختلفة باستخدام الأزرار أدناه.",
+        "logout": "تسجيل الخروج",
+        "navigation": {
+            "stack_demo": "الانتقال إلى عرض التكديس",
+            "tab_demo": "الانتقال إلى عرض التبويب",
+            "drawer_demo": "الانتقال إلى عرض القائمة الجانبية",
+            "splash_screen": "شاشة الترحيب"
+        }
+    },
+    "commons": {
+        "Search here": "ابحث هنا"
     }
 }

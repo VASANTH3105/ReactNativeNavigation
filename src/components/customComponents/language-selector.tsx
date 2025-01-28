@@ -1,62 +1,66 @@
-import React, {useEffect, useState} from 'react';
-import {useTranslation} from 'react-i18next';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
   I18nManager,
+  Switch,
 } from 'react-native';
+import { MMKV } from 'react-native-mmkv';
 import RNRestart from 'react-native-restart';
-import {DevSettings} from 'react-native';
 
-const languages = [
-  {code: 'en', lang: 'English'},
-  {code: 'ar', lang: 'Arabic'},
-  // {code: 'fr', lang: 'French'},
-  // {code: 'hi', lang: 'Hindi'},
-];
+// Initialize MMKV storage
+const storage = new MMKV();
 
 const LanguageSelector = () => {
-  const {i18n} = useTranslation();
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en');
+  const { i18n } = useTranslation();
+  const [currentLanguage, setCurrentLanguage] = useState(storage.getString('appLanguage') || 'en');
+  const [isEnabled, setIsEnabled] = useState(currentLanguage === 'ar');
+
+  useEffect(() => {
+    // Get saved language from MMKV
+    const savedLanguage = storage.getString('appLanguage');
+    if (savedLanguage) {
+      setCurrentLanguage(savedLanguage);
+      i18n.changeLanguage(savedLanguage);
+      updateRTL(savedLanguage);
+    }
+  }, []);
+
+  const updateRTL = (language: any) => {
+    const isRTL = language === 'ar';
+    if (I18nManager.isRTL !== isRTL) {
+      I18nManager.allowRTL(isRTL);
+      I18nManager.forceRTL(isRTL);
+
+      setTimeout(() => {
+        RNRestart.Restart(); // Restart app for RTL changes
+      }, 5);
+    }
+  };
 
   const toggleLanguage = () => {
     const newLanguage = currentLanguage === 'en' ? 'ar' : 'en';
     setCurrentLanguage(newLanguage);
+    setIsEnabled(newLanguage === 'ar');
     i18n.changeLanguage(newLanguage);
-    console.log(`Language changed to: ${newLanguage}`);
-    const isRTL = newLanguage === 'ar';
-    if (I18nManager.isRTL !== isRTL) {
-      I18nManager.allowRTL(isRTL);
-      I18nManager.forceRTL(isRTL);
-      
-      RNRestart.Restart(); // Restart app for RTL change
-    }
+    storage.set('appLanguage', newLanguage); // Save in MMKV
+    updateRTL(newLanguage);
   };
-
-  // const changeLanguage = (lng: any) => {
-  //   console.log(`Language changed to: ${lng}`);
-  //   // Implement language change logic here
-  //   i18n.changeLanguage(lng);
-
-  //   const isRTL = lng === 'ar';
-
-  //   if (I18nManager.isRTL !== isRTL) {
-  //     I18nManager.allowRTL(isRTL);
-  //     I18nManager.forceRTL(isRTL);
-  //     RNRestart.Restart(); // Restart app for changes to apply
-  //     //DevSettings.reload(); // Refresh UI instead of restarting
-  //   }
-  // };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={toggleLanguage}>
-        <Text style={styles.buttonText}>
-          {currentLanguage === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-        </Text>
-      </TouchableOpacity>
+      <Text style={styles.text}>
+        Switch to Arabic: 
+        {/* {currentLanguage === 'en' ? 'English' : 'Arabic'} */}
+      </Text>
+      <Switch
+        trackColor={{ false: '#767577', true: '#81b0ff' }}
+        thumbColor={isEnabled ? '#007bff' : '#f4f3f4'}
+        onValueChange={toggleLanguage}
+        value={isEnabled}
+      />
     </View>
   );
 };
@@ -65,16 +69,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 20,
   },
-  button: {
-    backgroundColor: '#007bff',
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: '#fff',
+  text: {
     fontSize: 16,
+    marginRight: 10,
   },
 });
 

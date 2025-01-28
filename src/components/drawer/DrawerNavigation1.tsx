@@ -2,6 +2,8 @@ import { View, Text, Button } from 'react-native';
 import React, { useState } from 'react';
 import { getLocationData } from '../../appdata/storage'; // Use this directly
 import LanguageCheck from '../customComponents/LanguageCheck';
+import LanguageSelector from '../customComponents/language-selector';
+import FilePicker from '../customComponents/FilePicker';
 
 const DrawerNavigation1 = () => {
   const [latitude, setLatitude] = useState<string | null>(null);
@@ -27,7 +29,9 @@ const DrawerNavigation1 = () => {
           fetchLocationData(); // Use the renamed function
         }}
       />
-      <LanguageCheck />
+      {/* <LanguageCheck /> */}
+      <LanguageSelector />
+      <FilePicker />
     </View>
   );
 };

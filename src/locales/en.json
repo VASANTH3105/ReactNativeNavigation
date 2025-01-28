@@ -1,10 +1,43 @@
 {
-    "splashScreen": {
-      "welcome": "Welcome to RapidATS",
-      "subtitle": "Your one-stop solution for advanced tracking and management.",
-      "create_account": "Create Account",
-      "login": "Login",
-      "bottom_data_text": "Powered by Rapid Data Technologies"
+  "splashScreen": {
+    "welcome": "Welcome to RapidATS",
+    "subtitle": "Your one-stop solution for advanced tracking and management.",
+    "create_account": "Create Account",
+    "login": "Login",
+    "bottom_data_text": "Powered by Rapid Data Technologies"
+  },
+  "categories": {
+    "Projects": "Projects",
+    "POC": "POC",
+    "IT Operations": "IT Operations",
+    "HR": "HR",
+    "Profile": "Profile",
+    "Administration": "Administration",
+    "Training & Development": "Training & Development",
+    "Operations": "Operations"
+  },
+  "geolocation": {
+    "Search here": "Search here",
+    "Locate me": "Locate me",
+    "Login": "Login",
+    "Status: active (Online)": "Status: active (Online)",
+    "Fetching...": "Fetching...",
+    "You are {{distance}} meters away from office": "You are {{distance}} meters away from office",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude"
+  },
+  "homeScreen": {
+    "welcome": "Welcome to Home Screen",
+    "description": "Explore the app by navigating to different screens using the buttons below.",
+    "logout": "Logout",
+    "navigation": {
+      "stack_demo": "Go to Stack Navigation Demo",
+      "tab_demo": "Go to Tab Navigation Demo",
+      "drawer_demo": "Go to Drawer Navigation",
+      "splash_screen": "Splash Screen"
     }
+  },
+  "commons": {
+    "Search here": "Search here"
   }
-  
+}

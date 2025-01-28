@@ -1,5 +1,6 @@
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const categoriesData = [
   { id: '1', name: 'Projects' },
@@ -16,6 +17,8 @@ const categoriesData = [
 
 
 const Categories = () => {
+
+  const {t} = useTranslation();
   return (
     <View>
       {/* <Text>Categories</Text> */}
@@ -25,7 +28,7 @@ const Categories = () => {
       horizontal = {true}
       keyExtractor={(item) => item.id.toString()}
       renderItem = {({item}) => (
-        <Text style = {styles.flatListItem}>{item.name}</Text>
+        <Text style = {styles.flatListItem}>{t(`categories.${item.name}`)}</Text>
       )}
       />
     </View>
